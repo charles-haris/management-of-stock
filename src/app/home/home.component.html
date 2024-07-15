@@ -1,1 +1,28 @@
-<p>home works!</p>
+<div class="shadow mt-5 mx-auto py-3 px-5" style="max-width: 1200px; color:black !important;">
+
+  <h1 class="text-center text-primary mt-3">Our Products</h1>
+  <div  class="alert alert-primary text-center" *ngIf="!is_loaded">
+    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+    <span class="sr-only">Loading...</span>
+  </div>
+  <div class="row" >
+    <div class="col-lg-4 col-md-6 mt-3 " *ngFor="let product of products">
+      <div class="card">
+
+       <h1 class="text-center mt-4"><i class="fa fa-shopping-basket" aria-hidden="true"></i></h1>
+
+        <h6 class="text-center">{{product.name}}</h6>
+
+        <div class="card-body bg-warning text-end">
+
+          <a class="btn btn-primary me-2" routerLink="/detailProduct"> <i class="fa fa-eye" ></i></a>
+          <a class="btn btn-primary me-2" routerLink=""> <i class="fa fa-edit" ></i></a>
+          <a class="btn btn-danger" routerLink=""><i class="fa fa-trash" aria-hidden="true"></i></a>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
