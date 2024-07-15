@@ -16,7 +16,7 @@ export class LoadingDataService {
     return this.loading_data.get(this.url_api);
   }
 
-  getProduct(id:number){
+  getProduct(id:any){
     return this.loading_data.get(`${this.url_api}/${id}`);
   }
 
