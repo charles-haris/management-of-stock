@@ -25,15 +25,19 @@ export class DetailComponent implements OnInit{
   getProduct(id:any){
     this.load_data.getProduct(id).subscribe({
       next:(response:any)=>{
+
         console.log(response)
-        this.data_keys = Object.keys(response.data)
-        console.log(this.data_keys)
-        this.data_values = Object.values(response.data)
-        console.log(this.data_values)
+        if(response.data){
+          this.data_keys = Object.keys(response.data)
+          this.data_values = Object.values(response.data)
+          console.log(this.data_keys)
+          console.log(this.data_values)
+        }
+
+        this.is_loaded = true
 
         this.data_of_product = response
 
-        this.is_loaded = true
       },
       error:(error)=>{
         console.log(error)
