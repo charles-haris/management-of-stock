@@ -1,7 +1,10 @@
 <div class="shadow mt-5 mx-auto py-3 px-5" style="max-width: 1200px; color:black !important;">
 
   <h1 class="text-center text-primary mt-3">Detail Product</h1>
-
+  <div  class="alert alert-primary text-center" *ngIf="!is_loaded">
+    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+    <span class="sr-only">Loading...</span>
+  </div>
   <div class="row float-center" >
     <div class="col-lg-3">
       <div class="bg-warning box-img rounded">
@@ -13,7 +16,7 @@
     <div class="col-lg-9 col-md-6">
       <div class=" ms-1" width="80%">
         <div class="bg-light pt-2 pb-2 rounded mb-2">
-          <h2 class="ms-3">Product ID</h2>
+          <h2 class="ms-3">Product ID - {{data_of_product.id}}</h2>
         </div>
         <div class="bg-light pt-2 pb-2 rounded mb-2">
           <div class="row mb-1 ms-1 pt-2 ">
@@ -21,35 +24,26 @@
               <h4 class="ms-1">Product Name</h4>
             </div>
             <div class="col-lg-7 ms-4 pt-2  rounded border shadow-2  ">
-              <h4 class="ms-1">value</h4>
+              <h4 class="ms-1">{{data_of_product.name}}</h4>
             </div>
           </div>
 
-          <div class="row mb-1 ms-1 pt-2 ">
-            <div class="col-lg-4 ms-3 pt-2 rounded border shadow-2 bg-warning">
-              <h4 class="ms-1">Product Name</h4>
-            </div>
-            <div class="col-lg-7 ms-4 pt-2  rounded border shadow-2  ">
-              <h4 class="ms-1">value</h4>
-            </div>
-          </div>
 
-          <div class="row mb-1 ms-1 pt-2 ">
-            <div class="col-lg-4 ms-3 pt-2 rounded border shadow-2 bg-warning">
-              <h4 class="ms-1">Product Name</h4>
+          <section *ngIf="data_keys">
+            <div class="row mb-1 ms-1 pt-2 " *ngFor="let key of data_keys">
+              <div class="col-lg-4 ms-3 pt-2 rounded border shadow-2 bg-warning">
+                <h4 class="ms-1">{{key}}</h4>
+              </div>
+              <div class="col-lg-7 ms-4 pt-2  rounded border shadow-2  ">
+                <h4 class="ms-1">{{data_values[data_keys.indexOf(key)]}}</h4>
+              </div>
             </div>
-            <div class="col-lg-7 ms-4 pt-2  rounded border shadow-2  ">
-              <h4 class="ms-1">value</h4>
-            </div>
-          </div>
+          </section>
 
-          <div class="row mb-1 ms-1 pt-2 ">
-            <div class="col-lg-4 ms-3 pt-2 rounded border shadow-2 bg-warning">
-              <h4 class="ms-1">Product Name</h4>
-            </div>
-            <div class="col-lg-7 ms-4 pt-2  rounded border shadow-2  ">
-              <h4 class="ms-1">value</h4>
-            </div>
+
+
+
+
 
             <div class="row mt-3">
               <div class=" ms-2">
@@ -69,4 +63,3 @@
     </div>
 
   </div>
-</div>

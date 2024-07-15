@@ -10,6 +10,10 @@ import { LoadingDataService } from '../loading-data.service';
 export class DetailComponent implements OnInit{
   ID : any
   data_of_product:any
+  data_keys: any
+  data_values: any
+  count:number = 0
+  is_loaded: boolean = false
   route_id = inject(ActivatedRoute)
   load_data = inject(LoadingDataService)
 
@@ -20,9 +24,16 @@ export class DetailComponent implements OnInit{
 
   getProduct(id:any){
     this.load_data.getProduct(id).subscribe({
-      next:(data:any)=>{
-        console.log(data)
-        this.data_of_product = data
+      next:(response:any)=>{
+        console.log(response)
+        this.data_keys = Object.keys(response.data)
+        console.log(this.data_keys)
+        this.data_values = Object.values(response.data)
+        console.log(this.data_values)
+
+        this.data_of_product = response
+
+        this.is_loaded = true
       },
       error:(error)=>{
         console.log(error)
